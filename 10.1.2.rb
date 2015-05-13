@@ -19,7 +19,7 @@ world = [
 
 
 def continent_size world, x, y 
-  if world[y][x] != 'land' || world[y].nil?
+ if world[y].nil? || world[y][x] != 'land'
     # Either it's water or we already
     # counted it, but either way, we don't 
     # want to count it now.
