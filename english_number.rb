@@ -121,6 +121,10 @@ def num_string?(idx)
     #    puts idx
     result << num_prefix(idx)
   end
+
+  if idx == 0
+    result = "Zero"
+  end
  
   return result
 end
