@@ -1,13 +1,7 @@
-#Number letter counts
-#Problem 17
-#If the idxs 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
-
-#If all the idxs from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?
-
-
-#NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. The use of "and" when writing out idxs is in compliance with British usage.
-
-def num_string?(num)
+# Responsibility: 
+# Provide helper methods to convert a number to its english word form
+ 
+def num_prefix(num)
   if num == 1 
     return "One"
   end
@@ -92,58 +86,41 @@ def num_string?(num)
     return "Ninety"
   end
 end
-
-
-number = gets.chomp  # Testing , supposed to be 1000
-number_i = number.to_i
-number_s = number_i.to_s
-result = ""
-
-idx = number_i
-  
-#Thousands
-if idx > 999
-  result << "#{num_string?((idx.to_s[0]).to_i)}Thousand"
-  idx = idx % 1000 #Remove the counted number
-end
-# puts idx  # Testing
-#puts  (idx.to_s[0]).to_i
-
-#Hundreds
-if idx > 99
-  result << "#{num_string?((idx.to_s[0]).to_i)}Hundred"
-  if idx % 100 != 0 
-    result << "And" #If the number goes on, must add "And"
+ 
+def num_string?(idx)
+  result = ""
+ 
+  #Thousands
+  if idx > 999
+    result << "#{num_prefix((idx.to_s[0]).to_i)}Thousand"
+    idx = idx % 1000 #Remove the counted number
   end
-  idx = idx % 100 #Remove the counted number
-end
-  
-# 20 < idx < 100
-if idx > 20
-  idx2 = idx
-  if idx % 10 != 0
-    idx2 = idx - (idx % 10)
+ 
+  #Hundreds
+  if idx > 99
+    result << "#{num_prefix((idx.to_s[0]).to_i)}Hundred"
+    if idx % 100 != 0 
+      result << "And" #If the number goes on, must add "And"
+    end
+    idx = idx % 100 #Remove the counted number
   end
-  result << num_string?(idx2)
-   
-  idx = idx % 10 #Remove the counted number
+ 
+  # 20 < idx < 100
+  if idx > 20
+    idx2 = idx
+    if idx % 10 != 0
+      idx2 = idx - (idx % 10)
+    end
+    result << num_prefix(idx2)
+     
+    idx = idx % 10 #Remove the counted number
+  end
+ 
+  # <20
+  if idx > 0
+    #    puts idx
+    result << num_prefix(idx)
+  end
+ 
+  return result
 end
-
-
-# <20
-if idx > 0
-  #    puts idx
-  result << num_string?(idx)
-end
-  
-result << " "
-
-
-#puts "result = #{result}"
-print result
-
-
-
-#result.each do
-#  puts result
-#end
