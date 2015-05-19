@@ -140,7 +140,7 @@ result << " "
 
 
 #puts "result = #{result}"
-puts result
+print result
 
 
 

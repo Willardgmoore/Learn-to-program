@@ -3,6 +3,7 @@ puts "How many bottles would you like up there this time?"
 
 bottles = gets.chomp
 
+puts
 require './english_number.rb'
 #num_string?(bottles)
 
