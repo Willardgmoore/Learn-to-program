@@ -101,42 +101,42 @@ result = ""
 
 idx = number_i
   
-  #Thousands
-  if idx > 999
-    result << "#{num_string?((idx.to_s[0]).to_i)}Thousand"
-    idx = idx % 1000 #Remove the counted number
-  end
- # puts idx  # Testing
+#Thousands
+if idx > 999
+  result << "#{num_string?((idx.to_s[0]).to_i)}Thousand"
+  idx = idx % 1000 #Remove the counted number
+end
+# puts idx  # Testing
 #puts  (idx.to_s[0]).to_i
 
-  #Hundreds
-  if idx > 99
-    result << "#{num_string?((idx.to_s[0]).to_i)}Hundred"
-    if idx % 100 != 0 
-      result << "And" #If the number goes on, must add "And"
-    end
-    idx = idx % 100 #Remove the counted number
+#Hundreds
+if idx > 99
+  result << "#{num_string?((idx.to_s[0]).to_i)}Hundred"
+  if idx % 100 != 0 
+    result << "And" #If the number goes on, must add "And"
   end
+  idx = idx % 100 #Remove the counted number
+end
   
-  # 20 < idx < 100
-  if idx > 20
-    idx2 = idx
-    if idx % 10 != 0
-      idx2 = idx - (idx % 10)
-    end
-    result << num_string?(idx2)
+# 20 < idx < 100
+if idx > 20
+  idx2 = idx
+  if idx % 10 != 0
+    idx2 = idx - (idx % 10)
+  end
+  result << num_string?(idx2)
    
-    idx = idx % 10 #Remove the counted number
-  end
+  idx = idx % 10 #Remove the counted number
+end
 
 
-  # <20
-  if idx > 0
-    #    puts idx
-    result << num_string?(idx)
-  end
+# <20
+if idx > 0
+  #    puts idx
+  result << num_string?(idx)
+end
   
-  result << " "
+result << " "
 
 
 #puts "result = #{result}"
