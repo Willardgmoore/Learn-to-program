@@ -128,8 +128,10 @@ def num_string?(idx)
     result << num_prefix(idx)
   end
 
-result = result.split (?=[A-Z])
-#result = result.join(' ')
+# Supposed to be able to add spacing between the words for each number. 
+result = result.split /^(A-Z)/
+result = result.join("  ")
+
 
   return result
 end
