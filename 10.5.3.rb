@@ -18,7 +18,7 @@ while bottles < 1
 end
 puts
  
-#while bottles > 0 
+while bottles > 0 
 if num_string?(bottles) != "One"
   puts "#{num_string?(bottles)} bottles of beer on the wall."
   puts "#{num_string?(bottles)} bottles of beer."
@@ -42,4 +42,4 @@ end
 puts
 
 
-#end
+end
