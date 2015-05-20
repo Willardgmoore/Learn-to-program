@@ -2,6 +2,9 @@
 # Provide helper methods to convert a number to its english word form
  
 def num_prefix(num)
+  if num == 0
+    return "Zero"
+  end
   if num == 1 
     return "One"
   end
@@ -89,11 +92,15 @@ end
  
 def num_string?(idx)
   result = ""
+
+  if idx == 0
+    result << num_prefix(idx)
+  end
  
   #Thousands
   if idx > 999
     result << "#{num_prefix((idx.to_s[0]).to_i)}Thousand"
-    idx = idx % 1000 #Remove the counted number
+    idx %= 1000 #Remove the counted number
   end
  
   #Hundreds
@@ -102,7 +109,7 @@ def num_string?(idx)
     if idx % 100 != 0 
       result << "And" #If the number goes on, must add "And"
     end
-    idx = idx % 100 #Remove the counted number
+    idx %= 100 #Remove the counted number
   end
  
   # 20 < idx < 100
@@ -113,18 +120,16 @@ def num_string?(idx)
     end
     result << num_prefix(idx2)
      
-    idx = idx % 10 #Remove the counted number
+    idx %= 10 #Remove the counted number
   end
  
-  # <20
+  # 0 < idx < 20
   if idx > 0
-    #    puts idx
     result << num_prefix(idx)
   end
 
-  if idx == 0
-    result = "Zero"
-  end
- 
+result = result.split (?=[A-Z])
+#result = result.join(' ')
+
   return result
 end
